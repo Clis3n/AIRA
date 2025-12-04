@@ -18,8 +18,8 @@
     <a href="https://www.typescriptlang.org/">
       <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
     </a>
-    <a href="https://firebase.google.com/">
-      <img src="https://img.shields.io/badge/Firebase-Auth_%26_Database-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+    <a href="https://aviationstack.com/">
+      <img src="https://img.shields.io/badge/Data-AviationStack_API-F05032?style=for-the-badge&logo=airplane&logoColor=white" alt="AviationStack" />
     </a>
   </p>
 </div>
@@ -57,8 +57,8 @@ Dalam perjalanan udara, seringkali terdapat diskoneksi antara informasi penerban
 - **Dynamic Camera:** Kamera peta otomatis mengikuti arah hadap pengguna (*heading/compass mode*) dan menyesuaikan sudut pandang (*pitch*) saat mode berkendara aktif.
 
 ### 2. ✈️ Pelacakan Penerbangan & Bandara
-- **Live Flight Data:** Integrasi dengan **AviationStack API** untuk menampilkan status penerbangan (Scheduled, Active, Landed).
-- **Airport Discovery:** Menggunakan **Google Places API** untuk mencari dan menampilkan lokasi bandara di seluruh dunia.
+- **Live Flight Data:** Integrasi penuh dengan **AviationStack API** untuk menampilkan status penerbangan terkini (Scheduled, Active, Landed, Cancelled).
+- **Airport Discovery:** Menggunakan **Google Places API** untuk mencari dan menampilkan lokasi bandara di seluruh dunia beserta detail alamatnya.
 - **Visualisasi Rute Udara:** Menggambar garis geodesik melengkung antara bandara asal dan tujuan untuk visualisasi rute terbang yang realistis.
 
 ### 3. 💾 Personalisasi & Sinkronisasi Cloud
@@ -131,7 +131,9 @@ Logika ini terdapat pada file `app/_layout.tsx`.
 *   Ini mencegah akses tidak sah ke fitur utama aplikasi dan memastikan pengalaman pengguna yang mulus.
 
 ### 3. Integrasi Data (Search & Save)
-*   **Pencarian (`search.tsx`):** Menggunakan logika input teks dengan pemanggilan API Google Places (untuk bandara) atau AviationStack (untuk penerbangan).
+*   **Pencarian (`search.tsx`):**
+    *   Menggunakan **AviationStack API** untuk mengambil data penerbangan *real-time* berdasarkan kode IATA atau nomor penerbangan.
+    *   Menggunakan **Google Places API** untuk pencarian lokasi bandara.
 *   **Penyimpanan (`saved.tsx`):** Menggunakan Firebase Realtime Database. Data disimpan langsung di Cloud agar sinkron antar perangkat. Struktur data menggunakan UID pengguna sebagai *parent node* (`users/{uid}/favorites`) untuk memastikan privasi dan keamanan data antar pengguna.
 
 ---
@@ -145,7 +147,8 @@ Logika ini terdapat pada file `app/_layout.tsx`.
 | **State Mgmt** | React Hooks | Menggunakan `useState`, `useEffect`, `useRef` |
 | **Database** | Firebase Realtime DB | NoSQL database untuk data struktur JSON tree |
 | **Auth** | Firebase Authentication | Provider Email/Password |
-| **Maps** | React Native Maps | Menggunakan Provider Google Maps untuk Android |
+| **Flight API** | **AviationStack** | Provider data status penerbangan real-time |
+| **Maps API** | **Google Maps Platform** | Maps SDK (Android/iOS), Directions API, Places API |
 | **Icons** | Lucide React Native | Set ikon vektor yang konsisten, ringan, dan modern |
 | **Font** | Google Fonts (Poppins) | Dimuat secara asinkron via `expo-font` |
 
