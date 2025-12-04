@@ -114,7 +114,7 @@ AIRA/
 │   └── ui/
 │       └── CustomAlert.tsx  # Komponen Modal Alert reusable (Success/Error/Info)
 ├── constants/
-│   └── Colors.ts            # Definisi palet warna tema (Light/Dark)
+│   └── Colors.ts            # Definisi palet warna tema
 ├── services/
 │   └── firebaseConfig.ts    # Konfigurasi & inisialisasi Firebase Auth & DB
 ├── app/                     # Folder utama Routing
