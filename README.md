@@ -21,10 +21,13 @@
     <a href="https://firebase.google.com/">
       <img src="https://img.shields.io/badge/Firebase-Auth_%26_Database-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
     </a>
+    <a href="https://mapsplatform.google.com/">
+      <img src="https://img.shields.io/badge/Google_Maps-Platform-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Google Maps" />
+    </a>
     <a href="https://aviationstack.com/">
       <img src="https://img.shields.io/badge/Data-AviationStack_API-F05032?style=for-the-badge&logo=airplane&logoColor=white" alt="AviationStack" />
     </a>
-  </p>
+</p>
 </div>
 
 ---
