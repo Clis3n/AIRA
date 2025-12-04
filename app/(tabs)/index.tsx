@@ -11,8 +11,8 @@ import CustomAlert from '@/components/ui/CustomAlert';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
-const GOOGLE_API_KEY = "AIzaSyByJbhP7GXwvGkQDH7S-MMpZcbYSY8sReA"; 
-const AVIATION_API_KEY = "7a1ec2f2f516bdaecf07d567d35de0b7"; 
+const GOOGLE_API_KEY = "MAPS-KEY"; 
+const AVIATION_API_KEY = "AVIATION-KEY"; 
 
 const AIRPORT_COORDS: Record<string, { lat: number, lng: number }> = {
     'CGK': { lat: -6.1256, lng: 106.6558 },
