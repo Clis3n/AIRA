@@ -30,7 +30,7 @@
       "usesCleartextTraffic": true,
       "config": {
         "googleMaps": {
-          "apiKey": "MAPS-KEY"
+          "apiKey": "AIzaSyByJbhP7GXwvGkQDH7S-MMpZcbYSY8sReA"
         }
       },
       "permissions": [
