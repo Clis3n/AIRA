@@ -18,6 +18,9 @@
     <a href="https://www.typescriptlang.org/">
       <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
     </a>
+    <a href="https://firebase.google.com/">
+      <img src="https://img.shields.io/badge/Firebase-Auth_%26_Database-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+    </a>
     <a href="https://aviationstack.com/">
       <img src="https://img.shields.io/badge/Data-AviationStack_API-F05032?style=for-the-badge&logo=airplane&logoColor=white" alt="AviationStack" />
     </a>
@@ -34,11 +37,12 @@
 
 1. [Latar Belakang Proyek](#-latar-belakang-proyek)
 2. [Fitur Unggulan](#-fitur-unggulan)
-3. [Struktur Folder & File](#-struktur-folder--file)
-4. [Arsitektur & Logika Sistem](#-arsitektur--logika-sistem)
-5. [Spesifikasi Teknis](#-spesifikasi-teknis)
-6. [Instalasi & Penggunaan](#-instalasi--penggunaan)
-7. [Kredit Pengembang](#-kredit-pengembang)
+3. [Arsitektur & Logika Sistem](#-arsitektur--logika-sistem)
+4. [Struktur Folder](#-struktur-folder)
+5. [Struktur Database](#-struktur-database)
+6. [Spesifikasi Teknis](#-spesifikasi-teknis)
+7. [Instalasi & Penggunaan](#-instalasi--penggunaan)
+8. [Kredit Pengembang](#-kredit-pengembang)
 
 ---
 
@@ -53,7 +57,7 @@ Dalam perjalanan udara, seringkali terdapat diskoneksi antara informasi penerban
 ### 1. 🗺️ Sistem Navigasi Cerdas (Smart Navigation)
 - **Turn-by-Turn Guidance:** Memberikan instruksi manuver (belok kiri/kanan), estimasi waktu, dan sisa jarak secara *real-time*.
 - **Polyline Decoding:** Menerjemahkan data rute terenkripsi dari Google Directions API menjadi jalur visual presisi di peta.
-- **Auto Re-routing Logic:** Mendeteksi posisi pengguna secara *live* dan memperbarui instruksi langkah demi langkah.
+- **Auto Re-routing Logic:** Mendeteksi posisi pengguna secara *live* dan memperbarui instruksi langkah demi langkah secara otomatis.
 - **Dynamic Camera:** Kamera peta otomatis mengikuti arah hadap pengguna (*heading/compass mode*) dan menyesuaikan sudut pandang (*pitch*) saat mode berkendara aktif.
 
 ### 2. ✈️ Pelacakan Penerbangan & Bandara
@@ -64,52 +68,12 @@ Dalam perjalanan udara, seringkali terdapat diskoneksi antara informasi penerban
 ### 3. 💾 Personalisasi & Sinkronisasi Cloud
 - **Rencana Penerbangan:** Menyimpan jadwal penerbangan favorit ke **Firebase Realtime Database**.
 - **Cross-Device Sync:** Data tersimpan di *cloud*, memungkinkan akses konsisten dari perangkat berbeda.
+- **Manajemen Jadwal:** Pengguna dapat mengedit detail penerbangan atau menghapus jadwal yang sudah tidak relevan.
 - **Manajemen Profil:** Fitur lengkap untuk mengedit profil, mengubah kata sandi, hingga penghapusan akun permanen (*destructive action*) yang membersihkan data autentikasi dan database sekaligus.
 
 ### 4. 🔐 Keamanan & Autentikasi
 - **Secure Auth Flow:** Penanganan sesi pengguna dengan `onAuthStateChanged` untuk perlindungan rute (*Route Guarding*) yang ketat.
 - **Validasi Berlapis:** Pengecekan kekuatan kata sandi, format email valid, dan re-autentikasi (login ulang) saat pengguna melakukan perubahan data sensitif.
-
----
-
-## 📂 Struktur Folder & File
-
-Berikut adalah struktur lengkap proyek AIRA berdasarkan implementasi kode:
-
-```text
-AIRA/
-├── assets/                  # Aset statis aplikasi
-│   ├── fonts/               # Font Poppins (Regular, Bold, etc.)
-│   └── images/              # Icon aplikasi (icon.png), splash screen
-├── components/
-│   └── ui/
-│       └── CustomAlert.tsx  # Komponen Modal Alert reusable (Success/Error/Info)
-├── constants/
-│   └── Colors.ts            # Definisi palet warna tema (Light/Dark)
-├── services/
-│   └── firebaseConfig.ts    # Konfigurasi & inisialisasi Firebase Auth & DB
-├── app/                     # Folder utama Expo Router (File-based Routing)
-│   ├── (auth)/              # Route Group untuk autentikasi (tanpa tab bar)
-│   │   ├── _layout.tsx      # Layout khusus auth (Stack)
-│   │   ├── login.tsx        # Layar Login
-│   │   └── register.tsx     # Layar Registrasi
-│   ├── (tabs)/              # Route Group untuk navigasi utama (Bottom Tabs)
-│   │   ├── _layout.tsx      # Konfigurasi Tab Bar (Icon, Label, Style)
-│   │   ├── index.tsx        # [CORE] Layar Peta & Navigasi Utama
-│   │   ├── search.tsx       # Layar Pencarian (Bandara & Penerbangan)
-│   │   ├── saved.tsx        # Layar Daftar Tersimpan (Firebase List)
-│   │   └── profile.tsx      # Layar Menu Profil Pengguna
-│   ├── _layout.tsx          # Root Layout (Provider, Font Loading, Auth Check)
-│   ├── +not-found.tsx       # Fallback route (404)
-│   ├── about.tsx            # Halaman Tentang Aplikasi
-│   ├── delete-account.tsx   # Halaman Hapus Akun
-│   ├── edit-profile.tsx     # Halaman Edit Profil & Password
-│   ├── edit-saved.tsx       # Halaman Edit/Hapus Jadwal Tersimpan
-│   └── modal.tsx            # Halaman Modal (Opsional)
-├── app.json                 # Konfigurasi Expo (Nama, Slug, API Keys, Permissions)
-├── package.json             # Daftar dependensi & script
-└── tsconfig.json            # Konfigurasi TypeScript
-```
 
 ---
 
@@ -119,7 +83,7 @@ AIRA/
 Logika ini terdapat pada file `app/(tabs)/index.tsx`.
 *   **Inisiasi:** Saat pengguna memilih "Mulai Navigasi", aplikasi mengambil koordinat GPS pengguna (`Location.getCurrentPositionAsync`) sebagai titik awal dan koordinat bandara sebagai tujuan.
 *   **Routing API:** Aplikasi mengirim *request* ke Google Directions API.
-*   **Decoding:** Respons API berupa string enkripsi *polyline* didecode menjadi array koordinat `[{lat, lng}, ...]` untuk digambar sebagai garis rute pada peta.
+*   **Decoding:** Respons API berupa string enkripsi *polyline* didecode menggunakan algoritma bitwise menjadi array koordinat `[{lat, lng}, ...]` untuk digambar sebagai garis rute pada peta.
 *   **Step Logic:** Rute dipecah menjadi *steps* (langkah instruksi). Aplikasi memantau jarak pengguna ke titik akhir *step* saat ini menggunakan rumus Haversine. Jika jarak < 40 meter, instruksi UI diperbarui ke *step* berikutnya secara otomatis.
 
 ### 2. Autentikasi & Route Guarding
@@ -134,7 +98,87 @@ Logika ini terdapat pada file `app/_layout.tsx`.
 *   **Pencarian (`search.tsx`):**
     *   Menggunakan **AviationStack API** untuk mengambil data penerbangan *real-time* berdasarkan kode IATA atau nomor penerbangan.
     *   Menggunakan **Google Places API** untuk pencarian lokasi bandara.
-*   **Penyimpanan (`saved.tsx`):** Menggunakan Firebase Realtime Database. Data disimpan langsung di Cloud agar sinkron antar perangkat. Struktur data menggunakan UID pengguna sebagai *parent node* (`users/{uid}/favorites`) untuk memastikan privasi dan keamanan data antar pengguna.
+*   **Penyimpanan (`saved.tsx`):** Data disimpan di Cloud. Struktur data menggunakan UID pengguna sebagai *parent node* (`users/{uid}/favorites`) untuk memastikan privasi dan keamanan data antar pengguna.
+
+---
+
+## 📂 Struktur Folder
+
+Struktur proyek disusun menggunakan pola **Expo Router** (file-based routing) yang modern:
+
+```text
+AIRA/
+├── assets/                  # Aset statis aplikasi
+│   ├── fonts/               # Font Poppins (Regular, Bold, etc.)
+│   └── images/              # Icon aplikasi (icon.png), splash screen
+├── components/
+│   └── ui/
+│       └── CustomAlert.tsx  # Komponen Modal Alert reusable (Success/Error/Info)
+├── constants/
+│   └── Colors.ts            # Definisi palet warna tema (Light/Dark)
+├── services/
+│   └── firebaseConfig.ts    # Konfigurasi & inisialisasi Firebase Auth & DB
+├── app/                     # Folder utama Routing
+│   ├── (auth)/              # Group Autentikasi
+│   │   ├── _layout.tsx      # Layout Stack Auth
+│   │   ├── login.tsx        # Layar Login
+│   │   └── register.tsx     # Layar Registrasi
+│   ├── (tabs)/              # Group Navigasi Utama (Bottom Tabs)
+│   │   ├── _layout.tsx      # Konfigurasi Tab Bar
+│   │   ├── index.tsx        # [CORE] Layar Peta & Navigasi
+│   │   ├── search.tsx       # Layar Pencarian
+│   │   ├── saved.tsx        # Layar Tersimpan
+│   │   └── profile.tsx      # Layar Profil
+│   ├── _layout.tsx          # Root Layout (Provider, Font, Auth Check)
+│   ├── about.tsx            # Halaman Tentang Aplikasi
+│   ├── delete-account.tsx   # Logika Hapus Akun
+│   ├── edit-profile.tsx     # Logika Edit Profil
+│   ├── edit-saved.tsx       # Logika Edit Jadwal
+│   └── modal.tsx            # Halaman Modal
+├── app.json                 # Konfigurasi Expo & API Keys
+└── tsconfig.json            # Konfigurasi TypeScript
+```
+
+---
+
+## 🗄️ Struktur Database
+
+Aplikasi menggunakan **Firebase Realtime Database** dengan struktur JSON Tree sebagai berikut:
+
+```json
+{
+  "users": {
+    "USER_UID_12345": {
+      "profile": {
+        "username": "Clisen Ardy",
+        "email": "clisen@example.com",
+        "role": "user",
+        "createdAt": "2025-01-01T10:00:00.000Z"
+      },
+      "favorites": {
+        "-O9aBcDeFgHiJkLmNoP": {
+          "flightNumber": "GA-404",
+          "airline": "Garuda Indonesia",
+          "time": "14:00",
+          "origin": {
+            "code": "CGK",
+            "city": "Jakarta",
+            "lat": -6.1256,
+            "lng": 106.6558
+          },
+          "destination": {
+            "code": "DPS",
+            "city": "Denpasar",
+            "lat": -8.7482,
+            "lng": 115.1672
+          },
+          "savedAt": "2025-01-02T08:30:00.000Z"
+        }
+      }
+    }
+  }
+}
+```
 
 ---
 
