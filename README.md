@@ -157,7 +157,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek di lingkungan pengembanga
 
 1.  **Clone Repository**
     ```bash
-    git clone https://github.com/username/aira.git
+    git clone https://github.com/Clis3n/aira.git
     cd aira
     ```
 
