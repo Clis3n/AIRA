@@ -9,8 +9,8 @@ import { push, ref, set } from "firebase/database";
 import { auth, db } from '@/services/firebaseConfig';
 import CustomAlert from '@/components/ui/CustomAlert';
 
-const GOOGLE_API_KEY = "AIzaSyByJbhP7GXwvGkQDH7S-MMpZcbYSY8sReA"; 
-const AVIATION_API_KEY = "7a1ec2f2f516bdaecf07d567d35de0b7"; 
+const GOOGLE_API_KEY = "MAPS-KEY"; 
+const AVIATION_API_KEY = "AVIATION-KEY"; 
 
 type SearchType = 'airport' | 'flight';
 
