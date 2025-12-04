@@ -1,169 +1,197 @@
-# ✈️ AIRA - Flight Tracker & Navigation App
+<div align="center">
+  <img src="./assets/images/icon.png" alt="AIRA Logo" width="120" height="120" />
+  
+  <h1>AIRA</h1>
+  <h3>Aviation & Integrated Route Assistant</h3>
 
-![Status](https://img.shields.io/badge/Status-Active_Development-blue?style=for-the-badge)
-![Expo](https://img.shields.io/badge/Expo-52.0-000020?style=for-the-badge&logo=expo)
-![React Native](https://img.shields.io/badge/React_Native-0.76-61DAFB?style=for-the-badge&logo=react)
-![Firebase](https://img.shields.io/badge/Firebase-Auth%20%26%20DB-FFCA28?style=for-the-badge&logo=firebase)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)
+  <p>
+    <strong>Aplikasi Pelacak Penerbangan & Navigasi Terintegrasi</strong>
+  </p>
 
-**AIRA** adalah aplikasi *mobile* berbasis React Native (Expo) yang dirancang untuk memberikan pengalaman eksplorasi penerbangan dan navigasi geospasial yang intuitif. Aplikasi ini mengintegrasikan pemetaan *real-time*, pelacakan penerbangan, informasi bandara global, serta fitur navigasi berkendara (*turn-by-turn navigation*) menggunakan layanan Google Maps dan AviationStack.
-
----
-
-## 📱 Tampilan Aplikasi (Screenshots)
-
-<!-- Pastikan Anda menyimpan screenshot aplikasi di folder assets/images dengan nama file yang sesuai -->
-
-| Login & Register | Peta & Navigasi | Pencarian |
-|:---:|:---:|:---:|
-| <img src="./assets/images/login-preview.png" width="200" alt="Login Screen" /> | <img src="./assets/images/map-preview.png" width="200" alt="Map Navigation" /> | <img src="./assets/images/search-preview.png" width="200" alt="Search Flight" /> |
-
-| Jadwal Tersimpan | Profil Pengguna | Mode Gelap |
-|:---:|:---:|:---:|
-| <img src="./assets/images/saved-preview.png" width="200" alt="Saved Flights" /> | <img src="./assets/images/profile-preview.png" width="200" alt="User Profile" /> | <img src="./assets/images/darkmode-preview.png" width="200" alt="Dark Mode" /> |
-
----
-
-## ✨ Fitur Utama
-
-### 🗺️ Peta & Navigasi Cerdas
-*   **Pemetaan Real-time:** Menampilkan lokasi pengguna, bandara sekitar, dan pergerakan arah hadap (*heading*) menggunakan `react-native-maps`.
-*   **Navigasi Turn-by-Turn:** Simulasi rute berkendara dari lokasi pengguna ke bandara tujuan lengkap dengan instruksi jalan, estimasi waktu, dan jarak (Google Directions API).
-*   **Visualisasi Rute:** Menampilkan garis rute (*Polyline*) antara bandara asal dan tujuan penerbangan.
-*   **Tema Peta:** Mendukung tampilan Peta Standar dan Peta Mode Gelap (*Dark Mode*).
-
-### 🔎 Pencarian & Data Penerbangan
-*   **Pencarian Bandara:** Integrasi Google Places API untuk menemukan lokasi bandara secara global.
-*   **Pelacakan Penerbangan:** Mencari status penerbangan berdasarkan kode IATA (contoh: GA404) menggunakan AviationStack API.
-*   **Detail Penerbangan:** Informasi maskapai, nomor penerbangan, waktu keberangkatan, dan status (*Scheduled/Active/Landed*).
-
-### 💾 Manajemen Data (Personalized)
-*   **Simpan Jadwal:** Menyimpan rencana penerbangan ke daftar Favorit yang terhubung dengan **Firebase Realtime Database**.
-*   **CRUD Jadwal:** Pengguna dapat melihat, mengedit, dan menghapus jadwal penerbangan yang telah disimpan.
-*   **Akses Cepat:** Langsung memulai navigasi ke bandara dari daftar tersimpan.
-
-### 👤 Autentikasi & Profil
-*   **Keamanan Akun:** Login dan Register aman menggunakan **Firebase Authentication**.
-*   **Manajemen Profil:** Mengubah username, update password dengan autentikasi ulang.
-*   **Hapus Akun Permanen:** Fitur keamanan untuk menghapus seluruh data pengguna dari sistem.
+  <p>
+    <a href="https://expo.dev">
+      <img src="https://img.shields.io/badge/Expo-SDK_52-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo SDK" />
+    </a>
+    <a href="https://reactnative.dev">
+      <img src="https://img.shields.io/badge/React_Native-0.76-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React Native" />
+    </a>
+    <a href="https://www.typescriptlang.org/">
+      <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    </a>
+    <a href="https://firebase.google.com/">
+      <img src="https://img.shields.io/badge/Firebase-Auth_%26_Database-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+    </a>
+  </p>
+</div>
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
-
-*   **Framework:** [React Native](https://reactnative.dev/) dengan [Expo SDK 52](https://expo.dev/)
-*   **Bahasa:** [TypeScript](https://www.typescriptlang.org/)
-*   **Routing:** [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing)
-*   **Backend & Database:**
-    *   Firebase Authentication (Email/Password)
-    *   Firebase Realtime Database (JSON Tree)
-*   **Maps & Location:**
-    *   `react-native-maps` (Google Maps Provider)
-    *   `expo-location` (GPS & Compass)
-*   **API Eksternal:**
-    *   Google Maps Platform (Maps SDK, Places API, Directions API)
-    *   AviationStack API (Real-time Flight Data)
-*   **UI/UX:**
-    *   `lucide-react-native` (Ikon)
-    *   `@expo-google-fonts/poppins` (Tipografi)
-    *   Custom Components (Alerts, Cards)
+> **AIRA** adalah aplikasi *mobile* berbasis React Native (Expo) yang dirancang untuk memantau informasi penerbangan secara *real-time*, mencari lokasi bandara global, serta menyediakan sistem navigasi darat (*turn-by-turn navigation*) yang terintegrasi langsung di dalam aplikasi tanpa perlu berpindah ke aplikasi peta lain.
 
 ---
 
-## 📂 Struktur Proyek
+## 📋 Daftar Isi
+
+1. [Latar Belakang Proyek](#-latar-belakang-proyek)
+2. [Fitur Unggulan](#-fitur-unggulan)
+3. [Struktur Folder & File](#-struktur-folder--file)
+4. [Arsitektur & Logika Sistem](#-arsitektur--logika-sistem)
+5. [Spesifikasi Teknis](#-spesifikasi-teknis)
+6. [Instalasi & Penggunaan](#-instalasi--penggunaan)
+7. [Kredit Pengembang](#-kredit-pengembang)
+
+---
+
+## 📖 Latar Belakang Proyek
+
+Dalam perjalanan udara, seringkali terdapat diskoneksi antara informasi penerbangan dan mobilitas menuju bandara. AIRA dikembangkan untuk menjembatani celah tersebut. Aplikasi ini menyelesaikan masalah perpindahan aplikasi (*app switching*) dengan menyatukan fitur pencarian jadwal penerbangan, visualisasi rute udara, dan navigasi darat menuju bandara dalam satu antarmuka yang kohesif dan modern.
+
+---
+
+## 🌟 Fitur Unggulan
+
+### 1. 🗺️ Sistem Navigasi Cerdas (Smart Navigation)
+- **Turn-by-Turn Guidance:** Memberikan instruksi manuver (belok kiri/kanan), estimasi waktu, dan sisa jarak secara *real-time*.
+- **Polyline Decoding:** Menerjemahkan data rute terenkripsi dari Google Directions API menjadi jalur visual presisi di peta.
+- **Auto Re-routing Logic:** Mendeteksi posisi pengguna secara *live* dan memperbarui instruksi langkah demi langkah.
+- **Dynamic Camera:** Kamera peta otomatis mengikuti arah hadap pengguna (*heading/compass mode*) dan menyesuaikan sudut pandang (*pitch*) saat mode berkendara aktif.
+
+### 2. ✈️ Pelacakan Penerbangan & Bandara
+- **Live Flight Data:** Integrasi dengan **AviationStack API** untuk menampilkan status penerbangan (Scheduled, Active, Landed).
+- **Airport Discovery:** Menggunakan **Google Places API** untuk mencari dan menampilkan lokasi bandara di seluruh dunia.
+- **Visualisasi Rute Udara:** Menggambar garis geodesik melengkung antara bandara asal dan tujuan untuk visualisasi rute terbang yang realistis.
+
+### 3. 💾 Personalisasi & Sinkronisasi Cloud
+- **Rencana Penerbangan:** Menyimpan jadwal penerbangan favorit ke **Firebase Realtime Database**.
+- **Cross-Device Sync:** Data tersimpan di *cloud*, memungkinkan akses konsisten dari perangkat berbeda.
+- **Manajemen Profil:** Fitur lengkap untuk mengedit profil, mengubah kata sandi, hingga penghapusan akun permanen (*destructive action*) yang membersihkan data autentikasi dan database sekaligus.
+
+### 4. 🔐 Keamanan & Autentikasi
+- **Secure Auth Flow:** Penanganan sesi pengguna dengan `onAuthStateChanged` untuk perlindungan rute (*Route Guarding*) yang ketat.
+- **Validasi Berlapis:** Pengecekan kekuatan kata sandi, format email valid, dan re-autentikasi (login ulang) saat pengguna melakukan perubahan data sensitif.
+
+---
+
+## 📂 Struktur Folder & File
+
+Berikut adalah struktur lengkap proyek AIRA berdasarkan implementasi kode:
 
 ```text
 AIRA/
-├── app/                    # Halaman & Routing (Expo Router)
-│   ├── (auth)/             # Autentikasi (Login, Register, Layout)
-│   ├── (tabs)/             # Tab Bar Utama (Map, Search, Saved, Profile)
-│   ├── +html.tsx           # Entry point Web
-│   ├── +not-found.tsx      # 404 Page
-│   ├── _layout.tsx         # Root Layout & Auth Logic
-│   ├── about.tsx           # Halaman Tentang Aplikasi
-│   ├── delete-account.tsx  # Halaman Hapus Akun
-│   ├── edit-profile.tsx    # Halaman Edit Profil
-│   ├── edit-saved.tsx      # Halaman Edit Jadwal
-│   └── modal.tsx           # Modal Screen
-├── assets/                 # Gambar, Ikon, Fonts
-├── components/             # Komponen UI Reusable
+├── assets/                  # Aset statis aplikasi
+│   ├── fonts/               # Font Poppins (Regular, Bold, etc.)
+│   └── images/              # Icon aplikasi (icon.png), splash screen
+├── components/
 │   └── ui/
-│       └── CustomAlert.tsx # Komponen Alert Kustom
-├── constants/              # Warna & Konfigurasi Global
-├── services/               # Konfigurasi Backend
-│   └── firebaseConfig.ts   # Inisialisasi Firebase
-└── app.json                # Konfigurasi Expo & API Keys
+│       └── CustomAlert.tsx  # Komponen Modal Alert reusable (Success/Error/Info)
+├── constants/
+│   └── Colors.ts            # Definisi palet warna tema (Light/Dark)
+├── services/
+│   └── firebaseConfig.ts    # Konfigurasi & inisialisasi Firebase Auth & DB
+├── app/                     # Folder utama Expo Router (File-based Routing)
+│   ├── (auth)/              # Route Group untuk autentikasi (tanpa tab bar)
+│   │   ├── _layout.tsx      # Layout khusus auth (Stack)
+│   │   ├── login.tsx        # Layar Login
+│   │   └── register.tsx     # Layar Registrasi
+│   ├── (tabs)/              # Route Group untuk navigasi utama (Bottom Tabs)
+│   │   ├── _layout.tsx      # Konfigurasi Tab Bar (Icon, Label, Style)
+│   │   ├── index.tsx        # [CORE] Layar Peta & Navigasi Utama
+│   │   ├── search.tsx       # Layar Pencarian (Bandara & Penerbangan)
+│   │   ├── saved.tsx        # Layar Daftar Tersimpan (Firebase List)
+│   │   └── profile.tsx      # Layar Menu Profil Pengguna
+│   ├── _layout.tsx          # Root Layout (Provider, Font Loading, Auth Check)
+│   ├── +not-found.tsx       # Fallback route (404)
+│   ├── about.tsx            # Halaman Tentang Aplikasi
+│   ├── delete-account.tsx   # Halaman Hapus Akun
+│   ├── edit-profile.tsx     # Halaman Edit Profil & Password
+│   ├── edit-saved.tsx       # Halaman Edit/Hapus Jadwal Tersimpan
+│   └── modal.tsx            # Halaman Modal (Opsional)
+├── app.json                 # Konfigurasi Expo (Nama, Slug, API Keys, Permissions)
+├── package.json             # Daftar dependensi & script
+└── tsconfig.json            # Konfigurasi TypeScript
 ```
 
 ---
 
-## 🚀 Instalasi & Menjalankan
+## 🧠 Arsitektur & Logika Sistem
 
-Ikuti langkah ini untuk menjalankan proyek di lingkungan lokal Anda:
+### 1. Logika Navigasi Darat (Driving Mode)
+Logika ini terdapat pada file `app/(tabs)/index.tsx`.
+*   **Inisiasi:** Saat pengguna memilih "Mulai Navigasi", aplikasi mengambil koordinat GPS pengguna (`Location.getCurrentPositionAsync`) sebagai titik awal dan koordinat bandara sebagai tujuan.
+*   **Routing API:** Aplikasi mengirim *request* ke Google Directions API.
+*   **Decoding:** Respons API berupa string enkripsi *polyline* didecode menjadi array koordinat `[{lat, lng}, ...]` untuk digambar sebagai garis rute pada peta.
+*   **Step Logic:** Rute dipecah menjadi *steps* (langkah instruksi). Aplikasi memantau jarak pengguna ke titik akhir *step* saat ini menggunakan rumus Haversine. Jika jarak < 40 meter, instruksi UI diperbarui ke *step* berikutnya secara otomatis.
 
-### 1. Prasyarat
-Pastikan Anda telah menginstal:
-*   [Node.js](https://nodejs.org/) (LTS Version)
-*   Git
-*   [Expo CLI](https://docs.expo.dev/get-started/installation/)
+### 2. Autentikasi & Route Guarding
+Logika ini terdapat pada file `app/_layout.tsx`.
+*   Aplikasi menggunakan listener `onAuthStateChanged` dari Firebase.
+*   **Middleware Logic:**
+    *   Jika status User `null` dan pengguna berada di dalam grup `(tabs)`, sistem memaksa navigasi ke `(auth)/login`.
+    *   Jika status User `ada` dan pengguna berada di grup `(auth)`, sistem memaksa navigasi ke `(tabs)`.
+*   Ini mencegah akses tidak sah ke fitur utama aplikasi dan memastikan pengalaman pengguna yang mulus.
 
-### 2. Clone Repository
-```bash
-git clone https://github.com/username/aira.git
-cd aira
-```
-
-### 3. Instal Dependensi
-```bash
-npm install
-# atau
-yarn install
-```
-
-### 4. Konfigurasi API Keys
-Buat file `.env` atau sesuaikan langsung di kode (tidak disarankan untuk produksi) untuk kunci API berikut:
-*   **Google Maps API:** Aktifkan *Maps SDK for Android/iOS*, *Places API*, dan *Directions API* di Google Cloud Console.
-    *   Lokasi config: `app.json` dan `(tabs)/index.tsx`.
-*   **AviationStack API:** Dapatkan key untuk data penerbangan.
-    *   Lokasi config: `(tabs)/index.tsx` dan `(tabs)/search.tsx`.
-*   **Firebase:** Salin konfigurasi `google-services.json` / web config dari Firebase Console.
-    *   Lokasi config: `services/firebaseConfig.ts`.
-
-### 5. Jalankan Aplikasi
-```bash
-npx expo start
-```
-*   Tekan `a` di terminal untuk membuka di **Android Emulator**.
-*   Tekan `i` untuk membuka di **iOS Simulator** (macOS).
-*   Atau scan QR code menggunakan aplikasi **Expo Go** di perangkat fisik.
+### 3. Integrasi Data (Search & Save)
+*   **Pencarian (`search.tsx`):** Menggunakan logika input teks dengan pemanggilan API Google Places (untuk bandara) atau AviationStack (untuk penerbangan).
+*   **Penyimpanan (`saved.tsx`):** Menggunakan Firebase Realtime Database. Data disimpan langsung di Cloud agar sinkron antar perangkat. Struktur data menggunakan UID pengguna sebagai *parent node* (`users/{uid}/favorites`) untuk memastikan privasi dan keamanan data antar pengguna.
 
 ---
 
-## ⚠️ Izin Akses (Permissions)
+## 🛠️ Spesifikasi Teknis
 
-Aplikasi ini membutuhkan izin berikut agar berjalan optimal:
-1.  **Lokasi (ACCESS_FINE_LOCATION):** Digunakan untuk fitur navigasi *turn-by-turn*, mencari bandara terdekat, dan menampilkan posisi pengguna di peta.
-2.  **Internet:** Untuk sinkronisasi data dengan Firebase, Google Maps, dan AviationStack.
+| Komponen | Teknologi | Keterangan |
+| :--- | :--- | :--- |
+| **Framework** | React Native (Expo) | Menggunakan *New Architecture* Enabled |
+| **Routing** | Expo Router v3 | Navigasi berbasis file yang modern (mirip Next.js) |
+| **State Mgmt** | React Hooks | Menggunakan `useState`, `useEffect`, `useRef` |
+| **Database** | Firebase Realtime DB | NoSQL database untuk data struktur JSON tree |
+| **Auth** | Firebase Authentication | Provider Email/Password |
+| **Maps** | React Native Maps | Menggunakan Provider Google Maps untuk Android |
+| **Icons** | Lucide React Native | Set ikon vektor yang konsisten, ringan, dan modern |
+| **Font** | Google Fonts (Poppins) | Dimuat secara asinkron via `expo-font` |
 
 ---
 
-## 👨‍💻 Informasi Pengembang
+## 🚀 Instalasi & Penggunaan
 
-Aplikasi ini dikembangkan sebagai bagian dari proyek **Praktikum Pemrograman Geospasial: Perangkat Bergerak Lanjut**.
+Ikuti langkah-langkah berikut untuk menjalankan proyek di lingkungan pengembangan lokal:
+
+1.  **Clone Repository**
+    ```bash
+    git clone https://github.com/username/aira.git
+    cd aira
+    ```
+
+2.  **Instal Dependensi**
+    ```bash
+    npm install
+    # atau
+    npx expo install
+    ```
+
+3.  **Konfigurasi Environment**
+    *   Pastikan Anda memiliki file `services/firebaseConfig.ts` dengan kredensial Firebase Anda.
+    *   Pastikan `app.json` memiliki Google Maps API Key yang valid pada bagian `android.config.googleMaps.apiKey`.
+
+4.  **Jalankan Aplikasi**
+    ```bash
+    npx expo start
+    ```
+    *   Tekan `a` untuk membuka di Android Emulator.
+    *   Tekan `s` untuk beralih ke Expo Go (Scan QR Code di HP fisik).
+
+---
+
+## 👨‍💻 Kredit Pengembang
+
+Aplikasi ini dikembangkan sebagai bagian dari tugas praktikum pemrograman perangkat bergerak lanjut.
 
 *   **Nama:** Clisen Ardy Laksono Wicaksono
 *   **NIM:** 23/517152/SV/22742
-*   **Institusi:** Universitas Gadjah Mada
-*   **Versi Aplikasi:** 1.0.0
+*   **Program Studi:** Sistem Informasi Geografis
+*   **Mata Kuliah:** Praktikum Pemrograman Geospasial: Perangkat Bergerak Lanjut
 
 ---
 
-## 📝 Lisensi
-
-Proyek ini bersifat *Open Source* di bawah lisensi [MIT](LICENSE).
-
----
-
-<p align="center">
-  <i>Dibuat dengan ❤️ menggunakan React Native & Expo</i>
-</p>
+<div align="center">
+  <small>© 2025 AIRA Project. All Rights Reserved.</small>
+</div>
