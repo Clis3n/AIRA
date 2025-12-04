@@ -2,12 +2,8 @@
   <img src="./assets/images/icon.png" alt="AIRA Logo" width="120" height="120" />
   
   <h1>AIRA</h1>
-  <h3>Aviation & Integrated Route Assistant</h3>
-
-  <p>
-    <strong>Aplikasi Pelacak Penerbangan & Navigasi Terintegrasi</strong>
-  </p>
-
+  <h3>Aplikasi Pelacak Penerbangan & Navigasi Terintegrasi</h3>
+  
   <p>
     <a href="https://expo.dev">
       <img src="https://img.shields.io/badge/Expo-SDK_52-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo SDK" />
